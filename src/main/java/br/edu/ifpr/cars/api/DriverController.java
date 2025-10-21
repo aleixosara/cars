@@ -42,7 +42,7 @@ public class DriverController {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/driver")
+    @PostMapping("/drivers")
     public Driver createDriver(@RequestBody Driver driver) {
         return driverRepository.save(driver);
     }

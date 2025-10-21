@@ -42,13 +42,13 @@ public class PassengerController {
                 () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/passenger")
+    @PostMapping("/passengers")
     public Passenger createPassenger(@RequestBody Passenger passenger) {
         return passengerRepository.save(passenger);
     }
 
     // update
-    @PutMapping("/passenger/{id}")
+    @PutMapping("/passengers/{id}")
     public Passenger fullUpdateDriver(@PathVariable("id") Long id, @RequestBody Passenger passenger) {
         Passenger foundPassenger = findPassenger(id);
         foundPassenger.setName(passenger.getName());
@@ -57,7 +57,7 @@ public class PassengerController {
     }
 
     // atualiza em partes
-    @PatchMapping("/passenger/{id}")
+    @PatchMapping("/passengers/{id}")
     public Passenger incrementaUpdateDriver(@PathVariable("id") Long id, @RequestBody Passenger passenger) {
         Passenger foundPassenger = findPassenger(id);
 
@@ -71,7 +71,7 @@ public class PassengerController {
     }
 
     // delete por id
-    @DeleteMapping("/passenger/{id}")
+    @DeleteMapping("/passengers/{id}")
     public void incrementaUpdateDriver(@PathVariable("id") Long id) {
         passengerRepository.deleteById(id);
     }
