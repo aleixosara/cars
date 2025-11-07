@@ -27,14 +27,13 @@ import br.edu.ifpr.cars.domain.DriverRepository;
 public class DriverController {
 
     @Autowired // injeção de dependência
-    DriverRepository driverRepository; // objeto instancia do repositório
+    DriverRepository driverRepository; // objeto instancia do repositorio
 
     @GetMapping("/drivers")
     public List<Driver> listDrivers() {
         return driverRepository.findAll();
     }
 
-    // busca por id
     // definir uma Exception personalizada
     @GetMapping("/drivers/{id}")
     public Driver findDriver(@PathVariable("id") Long id) {
@@ -49,30 +48,30 @@ public class DriverController {
 
     // update
     @PutMapping("/drivers/{id}")
-    public Driver fullUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver) {
+    public Driver fullUpdateDriver(@PathVariable("id") Long id,
+            @RequestBody Driver driver) {
         Driver foundDriver = findDriver(id);
         foundDriver.setName(driver.getName());
         foundDriver.setBirthDate(driver.getBirthDate());
         return driverRepository.save(foundDriver);
     }
 
-    // atualiza em partes
     @PatchMapping("/drivers/{id}")
-    public Driver incrementaUpdateDriver(@PathVariable("id") Long id, @RequestBody Driver driver) {
-        Driver foundDriver = findDriver(id);
+    public Driver incrementalUpdateDriver(@PathVariable("id") Long id,
+            @RequestBody Driver driver){
+            Driver foundDriver = findDriver(id);
+            
+            foundDriver.setName(Optional.ofNullable(driver.getName())
+            .orElse(foundDriver.getName()));
 
-        foundDriver.setName(Optional.ofNullable(driver.getName())
-        .orElse(foundDriver.getName()));
+            foundDriver.setBirthDate(Optional.ofNullable(driver.getBirthDate())
+            .orElse(foundDriver.getBirthDate()));
 
-        foundDriver.setBirthDate(Optional.ofNullable(driver.getBirthDate())
-        .orElse(foundDriver.getBirthDate()));
-
-        return driverRepository.save(foundDriver);
+            return driverRepository.save(foundDriver);
     }
 
-    // delete por id
     @DeleteMapping("/drivers/{id}")
-    public void incrementaUpdateDriver(@PathVariable("id") Long id) {
+    public void deleteDriver(@PathVariable("id") Long id){
         driverRepository.deleteById(id);
     }
 }
