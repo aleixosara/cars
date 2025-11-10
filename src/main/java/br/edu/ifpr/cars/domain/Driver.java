@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.edu.ifpr.cars.validate.Impar;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,4 +36,6 @@ public class Driver {
 
     LocalDate birthDate;
 
+    @Impar
+    int n;
 }
