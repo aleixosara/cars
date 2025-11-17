@@ -4,15 +4,18 @@ import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.edu.ifpr.cars.validate.AnoCarro;
+import br.edu.ifpr.cars.validate.CNH;
 import br.edu.ifpr.cars.validate.Impar;
+import br.edu.ifpr.cars.validate.Placa;
+import br.edu.ifpr.cars.validate.SemOfensas;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.Data;
 
 @Entity
@@ -38,4 +41,17 @@ public class Driver {
 
     @Impar
     int n;
+
+    @Placa
+    String placa;
+
+    @NotBlank
+    @CNH
+    String cnh;
+
+    @AnoCarro
+    int anoCarro;
+
+    @SemOfensas
+    String comentario;
 }
