@@ -17,10 +17,6 @@ public class DriverService {
     @Autowired
     private DriverRepository driverRepository;
 
-    /*public DriverService(DriverRepository driverRepository) {
-        this.driverRepository = driverRepository;
-    }*/
-
     public List<Driver> listDrivers() {
         return driverRepository.findAll();
     }
