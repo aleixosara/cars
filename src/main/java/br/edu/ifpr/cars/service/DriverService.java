@@ -35,8 +35,6 @@ public class DriverService {
 
         foundDriver.setName(driver.getName());
         foundDriver.setBirthDate(driver.getBirthDate());
-        foundDriver.setN(driver.getN());
-
         return driverRepository.save(foundDriver);
     }
 
@@ -48,10 +46,7 @@ public class DriverService {
 
         foundDriver.setBirthDate(Optional.ofNullable(driver.getBirthDate())
                 .orElse(foundDriver.getBirthDate()));
-
-        foundDriver.setN(Optional.ofNullable(driver.getN())
-                .orElse(foundDriver.getN()));
-
+                
         return driverRepository.save(foundDriver);
     }
 

@@ -6,7 +6,6 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import br.edu.ifpr.cars.validate.AnoCarro;
 import br.edu.ifpr.cars.validate.CNH;
-import br.edu.ifpr.cars.validate.Impar;
 import br.edu.ifpr.cars.validate.Placa;
 import br.edu.ifpr.cars.validate.SemOfensas;
 import jakarta.persistence.Entity;
@@ -38,9 +37,6 @@ public class Driver {
     String cpf;
 
     LocalDate birthDate;
-
-    @Impar
-    int n;
 
     @Placa
     String placa;
